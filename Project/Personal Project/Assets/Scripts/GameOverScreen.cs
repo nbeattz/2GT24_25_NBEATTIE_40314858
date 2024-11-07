@@ -5,12 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class GameOverScreen : MonoBehaviour
 {
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(1);
+            other.gameObject.SetActive(false); // Deactivate the player object instead of destroying it
+            Debug.Log("Game Over");
+
+            Time.timeScale = 0; // Pause the game
+
+            // Load "Scene 1"
+            SceneManager.LoadScene("Scene 1");
         }
     }
-
 }
