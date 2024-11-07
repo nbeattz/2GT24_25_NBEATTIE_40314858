@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class DetectMushroom : MonoBehaviour
 {
     public static int mushroomCollected = 0;
 
+    public TMP_Text scoreText;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        UpdateScoreText();
     }
 
     // Update is called once per frame
@@ -36,6 +39,7 @@ public class DetectMushroom : MonoBehaviour
             Debug.Log("Mushroom Collected " + mushroomCollected);
         }
 
+        UpdateScoreText();
         // Check for win condition
         if (mushroomCollected >= 15)
         {
@@ -44,4 +48,11 @@ public class DetectMushroom : MonoBehaviour
             SceneManager.LoadScene("Winner");
         }
     }
+
+    private void UpdateScoreText()
+    {
+        // Update the score text to show the current score out of 15
+        scoreText.text = "Score: " + mushroomCollected + "/15";
+    }
+
 }

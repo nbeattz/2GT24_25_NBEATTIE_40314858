@@ -9,7 +9,7 @@ public class GameOverScreen : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.gameObject.SetActive(false); // Deactivate the player object instead of destroying it
+            other.gameObject.SetActive(false); 
             Debug.Log("Game Over");
 
             Time.timeScale = 0; // Pause the game
