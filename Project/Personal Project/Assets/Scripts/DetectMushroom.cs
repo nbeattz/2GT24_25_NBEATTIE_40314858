@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DetectMushroom : MonoBehaviour
 {
@@ -38,7 +39,9 @@ public class DetectMushroom : MonoBehaviour
         // Check for win condition
         if (mushroomCollected >= 15)
         {
-            Debug.Log("You win!"); // Display win message 
+            Debug.Log("You win!");
+
+            SceneManager.LoadScene("Winner");
         }
     }
 }
