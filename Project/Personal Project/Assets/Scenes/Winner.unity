@@ -741,6 +741,7 @@ GameObject:
   - component: {fileID: 2089719188}
   - component: {fileID: 2089719187}
   - component: {fileID: 2089719186}
+  - component: {fileID: 2089719189}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -811,7 +812,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2089719187}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2089719189}
+        m_TargetAssemblyTypeName: ReplayButton, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2089719187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -850,6 +863,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089719184}
   m_CullTransparentMesh: 1
+--- !u!114 &2089719189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089719184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110736d711cf5cc4eb4e1283ad99e91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2091804970
 GameObject:
   m_ObjectHideFlags: 0

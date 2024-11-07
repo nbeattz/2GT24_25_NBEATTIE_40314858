@@ -14,23 +14,16 @@ public class GameOverScreen : MonoBehaviour
 
             Time.timeScale = 0; // Pause the game
 
-            // Load "Scene 1"
+            // Load the Game Over scene
             SceneManager.LoadScene("GameOver");
-        }
-    }
-    void Update()
-    {
-        // Check if the space bar is pressed
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            RestartGame();
         }
     }
 
     public void RestartGame()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1; // Resume the game
 
+        // Load the main game scene
         SceneManager.LoadScene("My Game");
     }
 }
