@@ -18,12 +18,4 @@ public class GameOverScreen : MonoBehaviour
             SceneManager.LoadScene("GameOver");
         }
     }
-
-    public void RestartGame()
-    {
-        Time.timeScale = 1; // Resume the game
-
-        // Load the main game scene
-        SceneManager.LoadScene("My Game");
-    }
 }
