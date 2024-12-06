@@ -8,6 +8,7 @@ TagManager:
   - Smushroom
   - Score
   - Enemy
+  - Stone
   layers:
   - Default
   - TransparentFX
