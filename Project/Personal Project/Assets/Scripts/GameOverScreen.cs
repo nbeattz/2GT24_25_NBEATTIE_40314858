@@ -5,12 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class GameOverScreen : MonoBehaviour
 {
+    public AudioSource audioPlayer;
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            other.gameObject.SetActive(false); 
+            other.gameObject.SetActive(false);
             Debug.Log("Game Over");
+
+            audioPlayer.PlayOneShot(audioPlayer.clip);
 
             Time.timeScale = 0; // Pause the game
 
@@ -19,3 +22,4 @@ public class GameOverScreen : MonoBehaviour
         }
     }
 }
+

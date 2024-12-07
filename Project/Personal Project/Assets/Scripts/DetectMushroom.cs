@@ -9,6 +9,8 @@ public class DetectMushroom : MonoBehaviour
     public static int mushroomCollected = 0;
 
     public TMP_Text scoreText;
+    public AudioClip mushroomSound; // Sound effect for Mushroom
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,14 @@ public class DetectMushroom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
 
+        audioSource.playOnAwake = false;
+        UpdateScoreText();
     }
 
     // Mushroom Gathered
@@ -29,6 +38,7 @@ public class DetectMushroom : MonoBehaviour
         {
             Destroy(other.gameObject);
             mushroomCollected += 1; // Add 1 point for Smushroom
+            PlaySound();
             Debug.Log("Mushroom Collected " + mushroomCollected);
         }
 
@@ -36,6 +46,7 @@ public class DetectMushroom : MonoBehaviour
         {
             Destroy(other.gameObject);
             mushroomCollected += 2; // Add 2 points for Lmushroom
+            PlaySound();
             Debug.Log("Mushroom Collected " + mushroomCollected);
         }
 
@@ -53,6 +64,14 @@ public class DetectMushroom : MonoBehaviour
     {
         // Update the score text to show the current score out of 15
         scoreText.text = "Score: " + mushroomCollected + "/15";
+    }
+    private void PlaySound()
+    {
+        if (mushroomSound != null) // Check if the AudioClip is assigned
+        {
+            audioSource.clip = mushroomSound; // Assign the AudioClip
+            audioSource.Play(); // Play the sound
+        }
     }
 
 }
