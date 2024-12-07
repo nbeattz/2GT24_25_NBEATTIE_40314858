@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameOverScreen : MonoBehaviour
 {
     public AudioSource audioPlayer;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -15,9 +14,10 @@ public class GameOverScreen : MonoBehaviour
 
             audioPlayer.PlayOneShot(audioPlayer.clip);
 
-            Time.timeScale = 0; // Pause the game
+            Time.timeScale = 0;            
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
 
-            // Load the Game Over scene
             SceneManager.LoadScene("GameOver");
         }
     }

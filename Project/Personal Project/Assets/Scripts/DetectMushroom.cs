@@ -15,6 +15,7 @@ public class DetectMushroom : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mushroomCollected = 0;
         UpdateScoreText();
     }
 
