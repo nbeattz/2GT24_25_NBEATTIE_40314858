@@ -27,10 +27,12 @@ public class FPSController : MonoBehaviour
     public bool canMove = true;
 
     CharacterController characterController;
+    public Animator animator; // Animation
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        animator = GetComponentInChildren<Animator>(); // Animation
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -40,11 +42,13 @@ public class FPSController : MonoBehaviour
     void Update()
     {
         #region Handles Movement
+
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
         bool isRunning = Input.GetKey(KeyCode.LeftShift) && canRun;
 
+        animator.SetBool("isRunning", isRunning); // Animation
         if (isRunning)
         {
             currentStamina -= staminaDepletionRate * Time.deltaTime;
@@ -69,16 +73,21 @@ public class FPSController : MonoBehaviour
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
+
+        animator.SetFloat("horizontal", Input.GetAxis("Horizontal")); // Animation
+        animator.SetFloat("vertical", Input.GetAxis("Vertical")); // Animation
         #endregion
 
         #region Handles Jumping
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
             moveDirection.y = jumpPower;
+            animator.SetBool("isJumping", true); // Animation
         }
         else
         {
             moveDirection.y = movementDirectionY;
+            animator.SetBool("isJumping", false); // Animation
         }
 
         if (!characterController.isGrounded)
