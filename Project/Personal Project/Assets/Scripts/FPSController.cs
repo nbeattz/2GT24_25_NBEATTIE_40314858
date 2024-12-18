@@ -111,47 +111,48 @@ public class FPSController : MonoBehaviour
         #endregion
     }
 
+    #region Handles Stamina Bar
     void OnGUI()
     {
-        // Reference resolution (1920x1080)
+        
         float referenceWidth = 1920f;
         float referenceHeight = 1080f;
 
-        // Scaling factor based on current screen size
+        
         float scaleX = Screen.width / referenceWidth;
         float scaleY = Screen.height / referenceHeight;
 
-        // Scale uniformly (use the smaller scale to maintain aspect ratio)
+        
         float scale = Mathf.Min(scaleX, scaleY);
 
-        // Define larger bar dimensions relative to the reference resolution
-        float width = 400f * scale;   // Increase width
-        float height = 40f * scale;  // Increase height
-        float xPos = Screen.width - width - (20f * scale);  // Adjust position
-        float yPos = Screen.height - height - (20f * scale); // Adjust position
+        
+        float width = 400f * scale;   
+        float height = 40f * scale;  
+        float xPos = Screen.width - width - (20f * scale);  
+        float yPos = Screen.height - height - (20f * scale); 
 
-        // Background box for the stamina bar
+        
         GUI.Box(new Rect(xPos, yPos, width, height), "", new GUIStyle()
         {
             normal = new GUIStyleState() { background = MakeTex(2, 2, new Color(0, 0, 0, 0.5f)) }
         });
 
-        // Foreground box for current stamina (purple color)
+        
         GUI.Box(new Rect(xPos, yPos, width * (currentStamina / maxStamina), height), "", new GUIStyle()
         {
-            normal = new GUIStyleState() { background = MakeTex(2, 2, new Color(0.5f, 0, 0.5f, 1f)) } // Purple color
+            normal = new GUIStyleState() { background = MakeTex(2, 2, new Color(0.5f, 0, 0.5f, 1f)) } 
         });
 
-        // Display "Stamina" text inside the box
+        // Display "Stamina" 
         GUIStyle textStyle = new GUIStyle();
         textStyle.alignment = TextAnchor.MiddleCenter;
-        textStyle.normal.textColor = Color.white; // White text color
-        textStyle.fontSize = (int)(40 * scale); // Scale the font size
+        textStyle.normal.textColor = Color.white; 
+        textStyle.fontSize = (int)(40 * scale); 
         textStyle.fontStyle = FontStyle.Bold;
         GUI.Label(new Rect(xPos, yPos, width, height), "STAMINA", textStyle);
     }
 
-    // Utility function to create textures for the stamina bar
+   
     private Texture2D MakeTex(int width, int height, Color color)
     {
         Color[] pix = new Color[width * height];
@@ -161,4 +162,6 @@ public class FPSController : MonoBehaviour
         result.Apply();
         return result;
     }
+
+    #endregion
 }
