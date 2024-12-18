@@ -64,7 +64,7 @@ public class DetectMushroom : MonoBehaviour
     private void UpdateScoreText()
     {
         // Update the score text to show the current score out of 15
-        scoreText.text = "Score: " + mushroomCollected + "/15";
+        scoreText.text = "Mushrooms: " + mushroomCollected + "/15";
     }
     private void PlaySound()
     {
