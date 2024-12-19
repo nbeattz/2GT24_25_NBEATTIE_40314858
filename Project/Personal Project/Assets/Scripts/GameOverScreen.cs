@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameOverScreen : MonoBehaviour
 {
-    public AudioSource audioPlayer;
+    
 
     void OnTriggerEnter(Collider other)
     {
@@ -11,8 +11,6 @@ public class GameOverScreen : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             Debug.Log("Game Over");
-
-            audioPlayer.PlayOneShot(audioPlayer.clip);
 
             Time.timeScale = 0;            
             Cursor.lockState = CursorLockMode.None;
