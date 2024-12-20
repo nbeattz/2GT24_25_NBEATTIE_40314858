@@ -11,6 +11,9 @@ TagManager:
   - Stone
   - EntryFloor
   - Magic Mushroom
+  - Easy
+  - Medium
+  - Hard
   layers:
   - Default
   - TransparentFX

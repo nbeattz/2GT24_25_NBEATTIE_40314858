@@ -24,6 +24,10 @@ public class AIScript : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        if (agent != null)
+        {
+            agent.speed = DifficultyManager.enemySpeed; 
+        }
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>(); // Ensure AudioSource component is attached
     }
