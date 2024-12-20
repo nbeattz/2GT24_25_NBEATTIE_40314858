@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CameraSwitcher : MonoBehaviour
 {
-    public Camera mainCamera;       
-    public Camera secondaryCamera; 
-    private bool isSecondaryActive = false; 
+    public Camera mainCamera;
+    public Camera secondaryCamera;
+    private bool isSecondaryActive = false;
 
     void Start()
     {
@@ -16,13 +16,23 @@ public class CameraSwitcher : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Q))
         {
-           
-            isSecondaryActive = !isSecondaryActive;
-
-            mainCamera.enabled = !isSecondaryActive;
-            secondaryCamera.enabled = isSecondaryActive;
+            if (!isSecondaryActive)  
+            {
+                isSecondaryActive = true;
+                mainCamera.enabled = false;
+                secondaryCamera.enabled = true;
+            }
+        }
+        else
+        {
+            if (isSecondaryActive)  
+            {
+                isSecondaryActive = false;
+                mainCamera.enabled = true;
+                secondaryCamera.enabled = false;
+            }
         }
     }
 }

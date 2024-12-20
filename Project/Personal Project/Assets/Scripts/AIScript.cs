@@ -15,10 +15,17 @@ public class AIScript : MonoBehaviour
     public float pathUpdateInterval = 5f; // Default update interval (in seconds)
     private float lastPathUpdateTime = 0f; // Time of last path update
 
+    // Sound effect
+    public AudioSource audioSource; // Reference to the AudioSource component
+    public AudioClip soundEffect; // Reference to the sound effect to be played
+    private float lastSoundTime = 0f; // Timer to manage sound playback delay
+    public float soundDelay = 10f; // 10 second delay before sound can play again
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>(); // Ensure AudioSource component is attached
     }
 
     void Update()
@@ -30,6 +37,12 @@ public class AIScript : MonoBehaviour
         if (distanceToPlayer <= 10f)
         {
             pathUpdateInterval = 0f; // Instant path update (no delay)
+
+            // Check if it's time to play the sound
+            if (Time.time - lastSoundTime >= soundDelay)
+            {
+                PlaySound();
+            }
         }
         else
         {
@@ -68,6 +81,16 @@ public class AIScript : MonoBehaviour
             {
                 animator.SetBool("isAttacking", false); // Stop the bite animation
             }
+        }
+    }
+
+    // Play sound effect and set the timer for delay
+    private void PlaySound()
+    {
+        if (audioSource != null && soundEffect != null)
+        {
+            audioSource.PlayOneShot(soundEffect); // Play the sound effect once
+            lastSoundTime = Time.time; // Update the last sound played time
         }
     }
 }

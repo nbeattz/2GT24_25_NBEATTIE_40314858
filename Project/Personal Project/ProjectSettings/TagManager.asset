@@ -9,6 +9,8 @@ TagManager:
   - Score
   - Enemy
   - Stone
+  - EntryFloor
+  - Magic Mushroom
   layers:
   - Default
   - TransparentFX
