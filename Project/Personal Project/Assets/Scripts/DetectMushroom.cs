@@ -12,16 +12,16 @@ public class DetectMushroom : MonoBehaviour
     public AudioClip mushroomSound; // Sound effect for Mushroom
     private AudioSource audioSource;
 
-    private bool hasReachedEntryFloor = false; // Track if the player has reached EntryFloor
+    private bool hasReachedEntryFloor = false; 
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         mushroomCollected = 0;
         UpdateScoreText();
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
@@ -33,7 +33,7 @@ public class DetectMushroom : MonoBehaviour
         audioSource.playOnAwake = false;
         UpdateScoreText();
 
-        // Check for the win condition when player has 15 mushrooms and is at the EntryFloor
+       
         if (mushroomCollected >= 15 && hasReachedEntryFloor)
         {
             Debug.Log("You win!");
@@ -46,7 +46,7 @@ public class DetectMushroom : MonoBehaviour
         }
     }
 
-    // Mushroom Gathered and EntryFloor reached (combined into one OnTriggerEnter)
+    
     private void OnTriggerEnter(Collider other)
     {
         // Mushroom collection triggers
@@ -69,15 +69,15 @@ public class DetectMushroom : MonoBehaviour
         if (other.CompareTag("Magic Mushroom"))
         {
             Destroy(other.gameObject);
-            mushroomCollected += 15; // Add 15 points for Magic Mushroom
+            mushroomCollected += 15; // Add 15 points for Magic Mushroom - Win Tester
             PlaySound();
             Debug.Log("Mushroom Collected " + mushroomCollected);
         }
 
-        // EntryFloor trigger (only allow when 15 mushrooms are collected)
+        
         if (other.CompareTag("EntryFloor") && mushroomCollected >= 15)
         {
-            hasReachedEntryFloor = true; // Mark that the player has reached EntryFloor
+            hasReachedEntryFloor = true; 
             Debug.Log("Player has reached EntryFloor and collected 15 mushrooms!");
         }
 
@@ -100,10 +100,10 @@ public class DetectMushroom : MonoBehaviour
 
     private void PlaySound()
     {
-        if (mushroomSound != null) // Check if the AudioClip is assigned
+        if (mushroomSound != null) 
         {
-            audioSource.clip = mushroomSound; // Assign the AudioClip
-            audioSource.Play(); // Play the sound
+            audioSource.clip = mushroomSound; 
+            audioSource.Play(); 
         }
     }
 }
